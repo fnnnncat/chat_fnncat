@@ -1,0 +1,24 @@
+{
+  "name": "chat_fnncat",
+  "version": "1.0.0",
+  "description": "chat base on node",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangxiaohui0510/chat_fnncat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangxiaohui0510/chat_fnncat/issues"
+  },
+  "homepage": "https://github.com/zhangxiaohui0510/chat_fnncat#readme",
+  "dependencies":{
+	  "express":"3.4.x",
+	  "socket.io":"0.9.x"
+  }
+
+}
