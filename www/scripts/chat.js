@@ -1,36 +1,36 @@
 window.onload = function() {
-    var hichat = new HiChat();
-    hichat.init();
+    var chat = new Chat();
+    chat.init();
 };
-var HiChat = function() {
+var Chat = function() {
     this.socket = null;
 };
-HiChat.prototype = {
+Chat.prototype = {
     init: function() {
         var that = this;
         this.socket = io.connect();
         this.socket.on('connect', function() {
-            document.getElementById('info').textContent = 'get yourself a nickname :)';
+            document.getElementById('info').textContent = 'baby.来起个名字吧';
             document.getElementById('nickWrapper').style.display = 'block';
             document.getElementById('nicknameInput').focus();
         });
         this.socket.on('nickExisted', function() {
-            document.getElementById('info').textContent = '!nickname is taken, choose another pls';
+            document.getElementById('info').textContent = '亲爱滴，这个名字已经有了吼';
         });
         this.socket.on('loginSuccess', function() {
-            document.title = 'hichat | ' + document.getElementById('nicknameInput').value;
+            document.title = '聊天室 | ' + document.getElementById('nicknameInput').value;
             document.getElementById('loginWrapper').style.display = 'none';
-            document.getElementById('messageInput').focus();
+            ocument.getElementById('messageInput').focus();
         });
-        this.socket.on('error', function(err) {
+        this.socket.on('error', function(err){ 
             if (document.getElementById('loginWrapper').style.display == 'none') {
-                document.getElementById('status').textContent = '!fail to connect :(';
+                document.getElementById('status').textContent = 'sorry,baby,链接不上哟';
             } else {
-                document.getElementById('info').textContent = '!fail to connect :(';
+                document.getElementById('info').textContent = 'baby链接不上哟';
             }
         });
         this.socket.on('system', function(nickName, userCount, type) {
-            var msg = nickName + (type == 'login' ? ' joined' : ' left');
+            var msg = nickName + (type == 'login' ? ' 进入聊天室' : ' left');
             that._displayNewMsg('system ', msg, 'red');
             document.getElementById('status').textContent = userCount + (userCount > 1 ? ' users' : ' user') + ' online';
         });
@@ -140,7 +140,7 @@ HiChat.prototype = {
         msgToDisplay.style.color = color || '#000';
         msgToDisplay.innerHTML = user + '<span class="timespan">(' + date + '): </span>' + msg;
         container.appendChild(msgToDisplay);
-        container.scrollTop = container.scrollHeight;
+        container.scrollTop = container.scrollHight;
     },
     _displayImage: function(user, imgData, color) {
         var container = document.getElementById('historyMsg'),
